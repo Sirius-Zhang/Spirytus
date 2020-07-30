@@ -1,7 +1,7 @@
-package cool.sirius.spirytus.example.service
+package cool.sirius.liquor.spirytus.example.service
 
-import cool.sirius.spirytus.example.repo.ExampleRepo
-import cool.sirius.spirytus.util.{JavaCollectionMapper, ObjectAnnotation, ObjectAutoConfig}
+import cool.sirius.liquor.spirytus.example.repo.ExampleRepo
+import cool.sirius.liquor.spirytus.util.{JavaCollectionMapper, ObjectAnnotation, ObjectAutoConfig}
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

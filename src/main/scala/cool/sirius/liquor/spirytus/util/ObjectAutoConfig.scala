@@ -1,4 +1,4 @@
-package cool.sirius.spirytus.util
+package cool.sirius.liquor.spirytus.util
 
 import org.slf4j.{Logger, LoggerFactory}
 

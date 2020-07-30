@@ -1,8 +1,7 @@
-package cool.sirius.spirytus.example.service
+package cool.sirius.liquor.spirytus.example.service
 
-import cool.sirius.spirytus.example.domain.ExampleDomain
-import cool.sirius.spirytus.example.repo.ExampleRepoSingleton
-import cool.sirius.spirytus.util.{ObjectAnnotation, ObjectAutoConfig}
+import cool.sirius.liquor.spirytus.example.repo.ExampleRepoSingleton
+import cool.sirius.liquor.spirytus.util.{ObjectAnnotation, ObjectAutoConfig}
 import org.springframework.stereotype.Service
 
 @Service

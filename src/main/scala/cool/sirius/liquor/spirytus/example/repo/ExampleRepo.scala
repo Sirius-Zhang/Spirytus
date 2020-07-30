@@ -1,6 +1,6 @@
-package cool.sirius.spirytus.example.repo
+package cool.sirius.liquor.spirytus.example.repo
 
-import cool.sirius.spirytus.example.domain.ExampleDomain
+import cool.sirius.liquor.spirytus.example.domain.ExampleDomain
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

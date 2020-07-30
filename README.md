@@ -2,7 +2,7 @@
 -----------------------------
 Spirytus is merely a helper package for those who hates the verbosity of Java and wants the simplicity Spring Framework brought for web servers.
 
-Example usage can be found under package `cool.sirius.spirytus.example`.
+Example usage can be found under package `cool.sirius.liquor.spirytus.example`.
 
 Sadly, for repositories, I haven't yet found a simpler way to implement it. If one wishes to utilize Spring implemented repository methods 
 without having to explicitly convert parameter type from Scala to Java, you need to either wrap it in an Object or use implicit convert methods from 

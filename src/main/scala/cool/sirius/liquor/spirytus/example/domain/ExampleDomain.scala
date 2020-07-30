@@ -1,4 +1,4 @@
-package cool.sirius.spirytus.example.domain
+package cool.sirius.liquor.spirytus.example.domain
 
 import javax.persistence.{Column, Entity, Id}
 
