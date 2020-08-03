@@ -47,5 +47,11 @@ trait RepoHelper[T, U, V <: JpaRepository[T, U]] extends JavaCollectionMapper {
 
   def deleteAll(): Unit = repo.deleteAll()
 
+  implicit class HandyOp(in: T) {
+    def persist: T = {
+      saveAndFlush(in)
+    }
+  }
+
 
 }
