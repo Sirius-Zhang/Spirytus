@@ -1,6 +1,5 @@
 package cool.sirius.liquor.spirytus.util
 
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.{Page, Pageable, Sort}
 import org.springframework.data.jpa.repository.JpaRepository
 
@@ -8,7 +7,6 @@ trait RepoHelper[T, U, V <: JpaRepository[T, U]] extends JavaCollectionMapper {
 
   var repository: V = _
 
-  @Autowired
   def setRepo(r: V): Unit ={
     repository = r
   }
