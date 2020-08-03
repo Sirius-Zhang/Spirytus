@@ -9,8 +9,12 @@ import org.springframework.stereotype.Service
 @ObjectAnnotation(ExampleService2)
 object ExampleService2 extends ObjectAutoConfig with JavaCollectionMapper{
 
+  var exampleRepo: ExampleRepo = _
+
   @Autowired
-  val exampleRepo: ExampleRepo = null
+  def setRepo(r: ExampleRepo): Unit ={
+    exampleRepo = r
+  }
 
   def chartByCity(): Map[String, Int] = {
     exampleRepo.findAll().toScala.groupBy(_.city).map(z => (z._1, z._2.length))

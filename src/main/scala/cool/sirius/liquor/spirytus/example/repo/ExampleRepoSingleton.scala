@@ -10,11 +10,9 @@ import org.springframework.stereotype.Service
 @ObjectAnnotation(ExampleRepoSingleton)
 object ExampleRepoSingleton extends RepoHelper[ExampleDomain, String, ExampleRepo] with ObjectAutoConfig{
 
-  //With ObjectAnnotation, autowired can help you with Spring Framework managed beans.
+  //All you need to do is to override the setRepo method with Autowired Repo.
   @Autowired
-  val repository: ExampleRepo = null
-
-  override def repo: ExampleRepo = repository
+  override def setRepo(r: ExampleRepo): Unit = super.setRepo(r)
 
   //Still needs to write some boilerplate codes though, it doesn't come in that handy for now.
   //All default methods come with JPARepository had been implemented in RepoHelper.
