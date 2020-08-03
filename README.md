@@ -57,11 +57,9 @@ Example repository singleton:
 @ObjectAnnotation(ExampleRepoSingleton)
 object ExampleRepoSingleton extends RepoHelper[ExampleDomain, String, ExampleRepo] with ObjectAutoConfig{
 
-  //With ObjectAnnotation, autowired can help you with Spring Framework managed beans.
+  //All you need to do is to override the setRepo method with Autowired Repo.
   @Autowired
-  val repository: ExampleRepo = null
-
-  override def repo: ExampleRepo = repository
+  override def setRepo(r: ExampleRepo): Unit = super.setRepo(r)
 
   //Still needs to write some boilerplate codes though, it doesn't come in that handy for now.
   //All default methods come with JPARepository had been implemented in RepoHelper.
@@ -113,8 +111,12 @@ Example service with autowired repository:
 @ObjectAnnotation(ExampleService2)
 object ExampleService2 extends ObjectAutoConfig with JavaCollectionMapper{
 
+  var exampleRepo: ExampleRepo = _
+
   @Autowired
-  val exampleRepo: ExampleRepo = null
+  def setRepo(r: ExampleRepo): Unit ={
+    exampleRepo = r
+  }
 
   def chartByCity(): Map[String, Int] = {
     exampleRepo.findAll().toScala.groupBy(_.city).map(z => (z._1, z._2.length))
