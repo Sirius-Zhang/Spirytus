@@ -24,6 +24,10 @@ trait JavaCollectionMapper {
     def toScala: Option[T] = in.asScala
   }
 
+  implicit class toScala5[K,V <: Any](in: java.util.Map[K, V]) {
+    def toScala: Map[K, V] = in.asScala.toMap
+  }
+
   implicit class foldToScala[T <: Any](in: Optional[java.util.List[T]]) {
     def foldToScala: List[T] = in.asScala.fold[List[T]](List())(z => z.asScala.toList)
   }
