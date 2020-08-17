@@ -23,6 +23,10 @@ trait JDBCHelper extends JavaCollectionMapper {
       })
     }
 
+    def queryForListWithType[T](clazz: Class[T]): List[T] = {
+      jdbcTemplate.queryForList(sql: String, clazz).toScala
+    }
+
     def queryForObject[T](clazz: Class[T]): T = {
       objectMapper.convertValue(jdbcTemplate.queryForMap(sql).toScala.map{case (k, v) => (CaseUtils.toCamelCase(k, false), v)}, clazz)
     }
