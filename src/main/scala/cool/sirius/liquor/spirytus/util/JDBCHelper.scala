@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate
 
 trait JDBCHelper extends JavaCollectionMapper {
 
-  val jdbcTemplate: JdbcTemplate = new JdbcTemplate(dataSource)
+  lazy val jdbcTemplate: JdbcTemplate = new JdbcTemplate(dataSource)
 
   val objectMapper: ObjectMapper = (new ObjectMapper() with ScalaObjectMapper).registerModule(DefaultScalaModule)
     .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
@@ -24,7 +24,7 @@ trait JDBCHelper extends JavaCollectionMapper {
     }
 
     def queryForListWithType[T](clazz: Class[T]): List[T] = {
-      jdbcTemplate.queryForList(sql: String, clazz).toScala
+      jdbcTemplate.queryForList(sql, clazz).toScala
     }
 
     def queryForObject[T](clazz: Class[T]): T = {

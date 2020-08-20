@@ -6,6 +6,7 @@
 
     <groupId>cool.sirius.liquor</groupId>
     <artifactId>Spirytus</artifactId>
+    <packaging>jar</packaging>
     <version>0.0.1</version>
 
     <dependencies>

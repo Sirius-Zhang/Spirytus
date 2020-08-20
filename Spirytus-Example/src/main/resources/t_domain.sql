@@ -1,0 +1,9 @@
+INSERT INTO example.t_domain (id, age, alive, city, name) VALUES ('253170f09d814bae950e0a47ccf1dd13', 24, true, 'Chengdu', 'Etta');
+INSERT INTO example.t_domain (id, age, alive, city, name) VALUES ('3a7c996f2af9497a837122e43867e5bd', 51, true, 'Shanghai', 'Hugo');
+INSERT INTO example.t_domain (id, age, alive, city, name) VALUES ('4d5656f10aad4584b540f59a3f7fcba9', 33, true, 'Chongqing', 'Dante');
+INSERT INTO example.t_domain (id, age, alive, city, name) VALUES ('89af67486c884077b41eb82dfff3d67f', 66, true, 'Beijing', 'Iris');
+INSERT INTO example.t_domain (id, age, alive, city, name) VALUES ('8b7cbb4dcdac4d5299a287a5f1d7c6da', 19, true, 'Shanghai', 'Alex');
+INSERT INTO example.t_domain (id, age, alive, city, name) VALUES ('99d629a9382b4eb89a19e9598ed1753a', 46, true, 'Tianjin', 'Felix');
+INSERT INTO example.t_domain (id, age, alive, city, name) VALUES ('b399a72fc5f242f5b2bcff0b2fcdbece', 28, true, 'Beijing', 'Bob');
+INSERT INTO example.t_domain (id, age, alive, city, name) VALUES ('c5b98c489a9640d19efced94749de732', 16, true, 'Shenzhen', 'Charles');
+INSERT INTO example.t_domain (id, age, alive, city, name) VALUES ('dfae5241ae6440a4a51c4cc8fc041669', 73, false, 'Zhengzhou', 'Gause');

@@ -1,0 +1,16 @@
+
+spring:
+  application:
+    name: Spirytus-Example
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+example:
+  jdbc:
+    jdbc-url: jdbc:mysql://localhost:3306/example?characterEncoding=utf-8&rewriteBatchedStatements=true&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+

@@ -1,8 +1,9 @@
 package cool.sirius.liquor.spirytus.example.domain
 
-import javax.persistence.{Column, Entity, Id}
+import javax.persistence.{Column, Entity, Id, Table}
 
 @Entity
+@Table(name = "t_domain")
 class ExampleDomain {
 
   @Id
@@ -20,4 +21,6 @@ class ExampleDomain {
 
   @Column
   var alive: Boolean = false
+
+  override def toString: String = s"id: $id, name: $name, city: $city, age: $age, alive: $alive"
 }
