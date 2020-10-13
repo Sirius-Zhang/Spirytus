@@ -1,5 +1,6 @@
 package cool.sirius.liquor.spirytus.util
 
+import java.util
 import java.util.Optional
 
 trait JavaCollectionMapper {
@@ -34,6 +35,10 @@ trait JavaCollectionMapper {
 
   implicit class toJava[T <: Any](in: List[T]) {
     def toJava: java.util.List[T] = in.asJava
+  }
+
+  implicit class toJava2[T <: Any](in: Map[String, T]) {
+    def toJava: java.util.HashMap[String, T] = new util.HashMap[String, T](in.asJava)
   }
 
 }
