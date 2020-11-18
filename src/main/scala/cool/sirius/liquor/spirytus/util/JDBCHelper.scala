@@ -37,6 +37,10 @@ trait JDBCHelper extends JavaCollectionMapper {
       })
     }
 
+    def queryForRawMap(): List[Map[String, Object]] = {
+      jdbcTemplate.queryForList(sql).toScala.map(_.toScala)
+    }
+
     def queryForMap(): List[Map[String, Any]] = {
       jdbcTemplate.queryForList(sql).toScala.map(entry => {
         entry.toScala.map{case (k, v) => {
