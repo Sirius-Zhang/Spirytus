@@ -37,8 +37,8 @@ trait JavaCollectionMapper {
     def toJava: java.util.List[T] = in.asJava
   }
 
-  implicit class toJava2[T <: Any](in: Map[String, T]) {
-    def toJava: java.util.HashMap[String, T] = new util.HashMap[String, T](in.asJava)
+  implicit class toJava2[K, V <: Any](in: Map[K, V]) {
+    def toJava: java.util.HashMap[K, V] = new util.HashMap[K, V](in.asJava)
   }
 
 }
