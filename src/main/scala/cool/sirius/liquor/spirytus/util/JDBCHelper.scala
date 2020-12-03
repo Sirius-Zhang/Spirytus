@@ -31,6 +31,10 @@ trait JDBCHelper extends JavaCollectionMapper {
       objectMapper.convertValue(jdbcTemplate.queryForMap(sql).toScala.map{case (k, v) => (CaseUtils.toCamelCase(k, false), v)}, clazz)
     }
 
+    def queryForPrimitiveObject[T](clazz: Class[T]): T = {
+      jdbcTemplate.queryForObject(sql, clazz)
+    }
+
     def queryForMapIgnoreType(): List[Map[String, String]] = {
       jdbcTemplate.queryForList(sql).toScala.map(entry => {
         entry.toScala.map{ case (k, v) => (k, Option(v).fold("")(_.toString))}
