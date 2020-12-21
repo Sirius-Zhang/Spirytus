@@ -1,10 +1,12 @@
 package cool.sirius.liquor.spirytus.util
 
+import java.sql.ResultSet
+
 import com.fasterxml.jackson.databind.{DeserializationFeature, ObjectMapper}
 import com.fasterxml.jackson.module.scala.{DefaultScalaModule, ScalaObjectMapper}
 import javax.sql.DataSource
 import org.apache.commons.text.CaseUtils
-import org.springframework.jdbc.core.JdbcTemplate
+import org.springframework.jdbc.core.{JdbcTemplate, ResultSetExtractor, RowCallbackHandler}
 
 
 trait JDBCHelper extends JavaCollectionMapper {
