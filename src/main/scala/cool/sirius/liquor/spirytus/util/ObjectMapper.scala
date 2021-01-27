@@ -20,6 +20,10 @@ trait ObjectMapper {
           (k, v)
       }.toMap
     }
+
+    def fields: List[String] = {
+      in.productElementNames.toList
+    }
   }
 
 }
