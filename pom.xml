@@ -61,8 +61,11 @@
                 <version>4.4.0</version>
                 <executions>
                     <execution>
+                        <id>scala-compile-first</id>
+                        <phase>process-resources</phase>
                         <goals>
                             <goal>compile</goal>
+                            <goal>add-source</goal>
                         </goals>
                     </execution>
                 </executions>

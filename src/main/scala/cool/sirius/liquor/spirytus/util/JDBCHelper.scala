@@ -21,7 +21,7 @@ trait JDBCHelper extends JavaCollectionMapper {
   implicit class QueryHelper(sql: String) {
     def queryForList[T](clazz: Class[T]): List[T] = {
       jdbcTemplate.queryForList(sql).toScala.map(element => {
-        objectMapper.convertValue(element.toScala.map{case (k, v) => (CaseUtils.toCamelCase(k, false), v)}, clazz)
+        objectMapper.convertValue(element.toScala.map{case (k, v) => (CaseUtils.toCamelCase(k, false, '_'), v)}, clazz)
       })
     }
 
@@ -30,7 +30,7 @@ trait JDBCHelper extends JavaCollectionMapper {
     }
 
     def queryForObject[T](clazz: Class[T]): T = {
-      objectMapper.convertValue(jdbcTemplate.queryForMap(sql).toScala.map{case (k, v) => (CaseUtils.toCamelCase(k, false), v)}, clazz)
+      objectMapper.convertValue(jdbcTemplate.queryForMap(sql).toScala.map{case (k, v) => (CaseUtils.toCamelCase(k, false, '_'), v)}, clazz)
     }
 
     def queryForPrimitiveObject[T](clazz: Class[T]): T = {
@@ -49,7 +49,7 @@ trait JDBCHelper extends JavaCollectionMapper {
 
     def queryForMap(): List[Map[String, Any]] = {
       jdbcTemplate.queryForList(sql).toScala.map(entry => {
-        entry.toScala.map{case (k, v) => {
+        entry.toScala.map{case (k, v) =>
           v match {
             case i@Int =>
               (k, i)
@@ -66,7 +66,7 @@ trait JDBCHelper extends JavaCollectionMapper {
             case _ =>
               (k, v.toString)
           }
-        }}
+        }
       })
     }
 
