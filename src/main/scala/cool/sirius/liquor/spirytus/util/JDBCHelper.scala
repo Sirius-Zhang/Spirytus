@@ -19,9 +19,15 @@ trait JDBCHelper extends JavaCollectionMapper {
   def dataSource: DataSource
 
   implicit class QueryHelper(sql: String) {
-    def queryForList[T](clazz: Class[T]): List[T] = {
+    def queryForListCamel[T](clazz: Class[T]): List[T] = {
       jdbcTemplate.queryForList(sql).toScala.map(element => {
         objectMapper.convertValue(element.toScala.map{case (k, v) => (CaseUtils.toCamelCase(k, false, '_'), v)}, clazz)
+      })
+    }
+
+    def queryForList[T](clazz: Class[T]): List[T] = {
+      jdbcTemplate.queryForList(sql).toScala.map(element => {
+        objectMapper.convertValue(element, clazz)
       })
     }
 
@@ -29,8 +35,12 @@ trait JDBCHelper extends JavaCollectionMapper {
       jdbcTemplate.queryForList(sql, clazz).toScala
     }
 
-    def queryForObject[T](clazz: Class[T]): T = {
+    def queryForObjectCamel[T](clazz: Class[T]): T = {
       objectMapper.convertValue(jdbcTemplate.queryForMap(sql).toScala.map{case (k, v) => (CaseUtils.toCamelCase(k, false, '_'), v)}, clazz)
+    }
+
+    def queryForObject[T](clazz: Class[T]): T = {
+      objectMapper.convertValue(jdbcTemplate.queryForMap(sql), clazz)
     }
 
     def queryForPrimitiveObject[T](clazz: Class[T]): T = {
