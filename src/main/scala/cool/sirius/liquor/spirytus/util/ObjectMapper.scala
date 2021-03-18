@@ -10,6 +10,9 @@ trait ObjectMapper {
         case (k: String, null) =>
           (k, "Null")
 
+        case (k: String, v: List[_]) =>
+          (k, v)
+
         case (k: String, v: Option[Product]) =>
           v.fold[(String, Any)]((k,None))(z => (k, z.toMap))
 
