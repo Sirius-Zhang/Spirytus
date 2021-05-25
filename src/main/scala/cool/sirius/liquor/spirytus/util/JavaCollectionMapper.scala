@@ -6,7 +6,6 @@ import java.util.Optional
 trait JavaCollectionMapper {
 
   import scala.jdk.CollectionConverters._
-  import scala.compat.java8.OptionConverters._
 
 
   implicit class toScala[T <: Any](in: java.util.List[T]) {
@@ -14,7 +13,7 @@ trait JavaCollectionMapper {
   }
 
   implicit class toScala2[T <: Any](in: Optional[java.util.List[T]]) {
-    def toScala: Option[List[T]] = in.asScala.fold[Option[List[T]]](None)(z => Some(z.asScala.toList))
+    def toScala: Option[List[T]] = if (in.isPresent) Some(in.get().toScala) else None
   }
 
   implicit class toScala3[T <: Any](in: java.lang.Iterable[T]) {
@@ -22,7 +21,7 @@ trait JavaCollectionMapper {
   }
 
   implicit class toScala4[T <: Any](in: Optional[T]) {
-    def toScala: Option[T] = in.asScala
+    def toScala: Option[T] = if (in.isPresent) Some(in.get()) else None
   }
 
   implicit class toScala5[K,V <: Any](in: java.util.Map[K, V]) {
@@ -30,7 +29,7 @@ trait JavaCollectionMapper {
   }
 
   implicit class foldToScala[T <: Any](in: Optional[java.util.List[T]]) {
-    def foldToScala: List[T] = in.asScala.fold[List[T]](List())(z => z.asScala.toList)
+    def foldToScala: List[T] = if (in.isPresent) in.get().toScala else List()
   }
 
   implicit class toJava[T <: Any](in: List[T]) {
