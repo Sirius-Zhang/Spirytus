@@ -40,4 +40,8 @@ trait JavaCollectionMapper {
     def toJava: java.util.HashMap[K, V] = new util.HashMap[K, V](in.asJava)
   }
 
+  implicit class toScala6[T <: Any](in: java.util.Iterator[T]) {
+    def toScala: Iterator[T] = in.asScala
+  }
+
 }
