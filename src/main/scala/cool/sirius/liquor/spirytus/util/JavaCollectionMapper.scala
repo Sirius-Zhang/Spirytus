@@ -44,4 +44,8 @@ trait JavaCollectionMapper {
     def toScala: Iterator[T] = in.asScala
   }
 
+  implicit class toJava3[T <: Any](in: Set[T]) {
+    def toJava: java.util.Set[T] = in.asJava
+  }
+
 }
