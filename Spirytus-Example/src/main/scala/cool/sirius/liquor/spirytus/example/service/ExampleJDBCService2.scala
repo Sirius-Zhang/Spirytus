@@ -41,15 +41,15 @@ object ExampleJDBCService2 extends JDBCHelper with ObjectAutoConfig {
   }
 
   def countExampleDomains(): Long = {
-    "select count(1) from t_domain".queryForObject(classOf[Long])
+    "select count(1) from t_domain".queryForPojo(classOf[Long])
   }
 
   def allExampleNames(): List[String] = {
-    "select distinct name from t_domain".queryForListWithType(classOf[String])
+    "select distinct name from t_domain".queryForListPrimitiveType(classOf[String])
   }
 
   def exampleDomainUnder20(): List[ExampleDomain] = {
-    "select * from t_domain where age < 20".queryForList(classOf[ExampleDomain])
+    "select * from t_domain where age < 20".queryForListPojo(classOf[ExampleDomain])
   }
 
 }
