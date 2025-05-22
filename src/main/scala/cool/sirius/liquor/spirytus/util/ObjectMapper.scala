@@ -2,7 +2,7 @@ package cool.sirius.liquor.spirytus.util
 
 trait ObjectMapper {
 
-  implicit class CC2Map(in: Product) {
+  extension (in: Product) {
     def toMap: Map[String, Any] = {
       (in.productElementNames zip in.productIterator).map {
         case (k: String, null) =>

@@ -10,6 +10,11 @@
     <packaging>jar</packaging>
     <version>0.0.1</version>
 
+    <properties>
+        <scala.version>3.3.1</scala.version>
+        <scala.compat.version>2.13</scala.compat.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>cool.sirius.liquor</groupId>
@@ -42,7 +47,7 @@
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
-                <version>4.4.0</version>
+                <version>4.8.1</version>
                 <executions>
                     <execution>
                         <goals>
@@ -50,6 +55,10 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <scalaVersion>${scala.version}</scalaVersion>
+                    <scalaCompatVersion>${scala.compat.version}</scalaCompatVersion>
+                </configuration>
             </plugin>
         </plugins>
     </build>

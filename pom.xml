@@ -9,16 +9,22 @@
     <packaging>jar</packaging>
     <version>0.0.1</version>
 
+    <properties>
+        <scala.version>3.3.1</scala.version>
+        <scala.compat.version>2.13</scala.compat.version>
+        <jackson.version>2.17.1</jackson.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
-            <artifactId>jackson-module-scala_2.13</artifactId>
-            <version>2.13.3</version>
+            <artifactId>jackson-module-scala_3</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.scala-lang.modules</groupId>
-            <artifactId>scala-java8-compat_2.13</artifactId>
+            <artifactId>scala-java8-compat_3</artifactId>
             <version>1.0.2</version>
         </dependency>
 
@@ -30,8 +36,8 @@
 
         <dependency>
             <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
-            <version>2.13.8</version>
+            <artifactId>scala3-library_3</artifactId>
+            <version>${scala.version}</version>
         </dependency>
 
         <dependency>
@@ -52,7 +58,7 @@
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
-                <version>4.6.1</version>
+                <version>4.8.1</version>
                 <executions>
                     <execution>
                         <id>scala-compile-first</id>
@@ -63,6 +69,10 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <scalaVersion>${scala.version}</scalaVersion>
+                    <scalaCompatVersion>${scala.compat.version}</scalaCompatVersion>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

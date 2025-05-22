@@ -2,50 +2,47 @@ package cool.sirius.liquor.spirytus.util
 
 import java.util
 import java.util.Optional
+import scala.annotation.targetName
 
 trait JavaCollectionMapper {
 
   import scala.jdk.CollectionConverters._
 
-
-  implicit class toScala[T <: Any](in: java.util.List[T]) {
+  extension [T <: Any](in: java.util.List[T])
+    @targetName("listToScala") 
     def toScala: List[T] = in.asScala.toList
-  }
 
-  implicit class toScala2[T <: Any](in: Optional[java.util.List[T]]) {
-    def toScala: Option[List[T]] = if (in.isPresent) Some(in.get().toScala) else None
-  }
+  extension [T <: Any](in: Optional[java.util.List[T]])
+    @targetName("optionalListToScala")
+    def toScala: Option[List[T]] = if (in.isPresent) Some(in.get().asScala.toList) else None
 
-  implicit class toScala3[T <: Any](in: java.lang.Iterable[T]) {
+  extension [T <: Any](in: java.lang.Iterable[T])
+    @targetName("iterableToScala")
     def toScala: List[T] = in.asScala.toList
-  }
 
-  implicit class toScala4[T <: Any](in: Optional[T]) {
+  extension [T <: Any](in: Optional[T])
+    @targetName("optionalToScala")
     def toScala: Option[T] = if (in.isPresent) Some(in.get()) else None
-  }
 
-  implicit class toScala5[K,V <: Any](in: java.util.Map[K, V]) {
+  extension [K,V <: Any](in: java.util.Map[K, V])
+    @targetName("mapToScala")
     def toScala: Map[K, V] = in.asScala.toMap
-  }
 
-  implicit class foldToScala[T <: Any](in: Optional[java.util.List[T]]) {
-    def foldToScala: List[T] = if (in.isPresent) in.get().toScala else List()
-  }
+  extension [T <: Any](in: Optional[java.util.List[T]])
+    @targetName("optionalListFoldToScala") // This might not be strictly necessary if the name `foldToScala` is unique enough
+    def foldToScala: List[T] = if (in.isPresent) in.get().asScala.toList else List()
 
-  implicit class toJava[T <: Any](in: List[T]) {
+  extension [T <: Any](in: List[T])
     def toJava: java.util.List[T] = in.asJava
-  }
 
-  implicit class toJava2[K, V <: Any](in: Map[K, V]) {
+  extension [K, V <: Any](in: Map[K, V])
     def toJava: java.util.HashMap[K, V] = new util.HashMap[K, V](in.asJava)
-  }
 
-  implicit class toScala6[T <: Any](in: java.util.Iterator[T]) {
+  extension [T <: Any](in: java.util.Iterator[T])
+    @targetName("iteratorToScala")
     def toScala: Iterator[T] = in.asScala
-  }
 
-  implicit class toJava3[T <: Any](in: Set[T]) {
+  extension [T <: Any](in: Set[T])
     def toJava: java.util.Set[T] = in.asJava
-  }
 
 }

@@ -12,7 +12,7 @@ object ExampleService2 extends ObjectAutoConfig with JavaCollectionMapper{
   var exampleRepo: ExampleRepo = _
 
   @Autowired
-  def setRepo(r: ExampleRepo): Unit ={
+  def setRepo(r: ExampleRepo): Unit = {
     exampleRepo = r
   }
 

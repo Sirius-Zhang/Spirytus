@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 @SpringBootApplication
 class Application
 
-object Application extends App {
+@main def main(): Unit = {
   SpringApplication.run(classOf[Application])
 
   println("All example domains ---")

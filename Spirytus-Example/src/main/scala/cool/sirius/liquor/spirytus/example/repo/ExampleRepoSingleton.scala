@@ -12,7 +12,7 @@ object ExampleRepoSingleton extends RepoHelper[ExampleDomain, String, ExampleRep
 
   //All you need to do is to override the setRepo method with Autowired Repo.
   @Autowired
-  override def setRepo(r: ExampleRepo): Unit = super.setRepo(r)
+  override def setRepo(r: ExampleRepo): Unit = { super.setRepo(r) }
 
   //Still needs to write some boilerplate codes though, it doesn't come in that handy for now.
   //All default methods come with JPARepository had been implemented in RepoHelper.
